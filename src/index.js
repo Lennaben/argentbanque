@@ -5,6 +5,7 @@ import "./index.css"
 import Nav from "./Components/Nav"
 import Home from "./Views/Home"
 import Footer from "./Components/Footer"
+import Signin from "./Views/Signin"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
@@ -12,6 +13,8 @@ root.render(
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<Signin />} />    
+
       </Routes>
       <Footer/>
     </BrowserRouter>
