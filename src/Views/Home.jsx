@@ -1,4 +1,5 @@
 import React from 'react'
+import icon from "../img/icon-chat.png"
 
 function Home() {
   return (
@@ -15,7 +16,7 @@ function Home() {
       <section class="features">
         <h2 class="sr-only">Features</h2>
         <div class="feature-item">
-          <img src="./img/icon-chat.png" alt="Chat Icon" class="feature-icon" />
+          <img src= {icon}   alt="Chat Icon" class="feature-icon" />
           <h3 class="feature-item-title">You are our #1 priority</h3>
           <p>
             Need to talk to a representative? You can get in touch through our
