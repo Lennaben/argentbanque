@@ -1,5 +1,7 @@
 import React from 'react'
 import icon from "../img/icon-chat.png"
+import iconmonay from "../img/icon-money.png"
+import iconsecurity from "../img/icon-security.png"
 
 function Home() {
   return (
@@ -25,7 +27,7 @@ function Home() {
         </div>
         <div class="feature-item">
           <img
-            src="./img/icon-money.png"
+            src= {iconmonay}
             alt="Chat Icon"
             class="feature-icon"
           />
@@ -36,7 +38,7 @@ function Home() {
         </div>
         <div class="feature-item">
           <img
-            src="./img/icon-security.png"
+            src={iconsecurity}
             alt="Chat Icon"
             class="feature-icon"
           />

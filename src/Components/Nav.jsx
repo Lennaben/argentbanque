@@ -1,4 +1,6 @@
 import React from 'react'
+import argentBankLogo from "../img/argentBankLogo.png"
+
 
 function Nav() {
   return (
@@ -6,7 +8,7 @@ function Nav() {
       <a classNamName="main-nav-logo" href="./index.html">
         <img
           className="main-nav-logo-image"
-          src=""
+          src={argentBankLogo}
           alt="Argent Bank Logo"
         />
         <h1 className="sr-only">Argent Bank</h1>
