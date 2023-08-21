@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 import argentBankLogo from "../img/argentBankLogo.png"
-
+import {Link} from "react-router-dom"
 
 function Nav() {
   return (
@@ -14,10 +14,10 @@ function Nav() {
         <h1 className="sr-only">Argent Bank</h1>
       </a>
       <div>
-        <a className="main-nav-item" href="./sign-in.html">
-          <i className="fa fa-user-circle"></i>
+        <Link class="main-nav-item" to="/sign-in">
+          <i class="fa fa-user-circle"></i>
           Sign In
-        </a>
+        </Link>
       </div>
     </nav>
   )
