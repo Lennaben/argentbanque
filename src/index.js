@@ -13,7 +13,7 @@ root.render(
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/sign-in" element={<Signin />} />    
+        <Route path="/sign-in" element={<Signin />} />  
 
       </Routes>
       <Footer/>
