@@ -1,7 +1,8 @@
 import React from "react"
 
+function User() {
+  // Si je suis pas connecter, reditreciont logion (Token)
 
-function User () {
   return (
     <main class="main bg-dark">
       <div class="header">
@@ -45,6 +46,5 @@ function User () {
       </section>
     </main>
   )
-
 }
- export default User
+export default User
