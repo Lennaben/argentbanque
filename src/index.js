@@ -14,7 +14,6 @@ root.render(
   <BrowserRouter>
     <Header />
     <Routes>
-
       <Route path="/" element={<Home />} />
       <Route path="/sign-in" element={<Signin />} />
       <Route path="*" element={<Erreur />} />

@@ -16,7 +16,7 @@ function Form() {
         <label for="remember-me">Remember me</label>
       </div>
       {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
-      <a href="./user.html" class="sign-in-button">
+      <a href="./user" class="sign-in-button">
         Sign In
       </a>
       {/* <!-- SHOULD BE THE BUTTON BELOW --> */}

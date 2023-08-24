@@ -13,7 +13,7 @@
 }
 
 .hero {
-  background-image: url("../img/bank-tree.jpeg");
+  background-image: url('../img/bank-tree.jpeg');
   background-position: 0 -50px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -40,6 +40,11 @@
 .hero-content .text {
   margin-bottom: 0;
   font-size: 0.9rem;
+}
+
+.header {
+  color: #fff;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 920px) {

@@ -1,12 +1,13 @@
 import React from "react"
 import Account from "../Components/Account/Account"
+import "../css/Home.css"
 
 function User() {
   // Si je suis pas connecter, reditreciont logion (Token)
 
   return (
-    <main className="main bg-dark">
-      <section className="account">
+    <div className="user">
+      <main className="main bg-dark">
         <div className="header">
           <h1>
             Welcome back
@@ -37,8 +38,8 @@ function User() {
         <div className="account-content-wrapper cta">
           <button className="transaction-button">View transactions</button>
         </div>
-      </section>
-    </main>
+      </main>
+    </div>
   )
 }
 export default User
