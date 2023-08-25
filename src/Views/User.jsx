@@ -1,12 +1,12 @@
 import React from "react"
 import Account from "../Components/Account/Account"
-import "../css/Home.css"
+
 
 function User() {
-  // Si je suis pas connecter, reditreciont logion (Token)
+  // Si je suis pas connectée, redirection login (Token)
 
   return (
-    <div className="user">
+  
       <main className="main bg-dark">
         <div className="header">
           <h1>
@@ -34,12 +34,8 @@ function User() {
           amount="$184.30"
           description="Available Balance"
         />
-
-        <div className="account-content-wrapper cta">
-          <button className="transaction-button">View transactions</button>
-        </div>
       </main>
-    </div>
+  
   )
 }
 export default User

@@ -2,8 +2,6 @@ import React from 'react'
 import icon from "../img/icon-chat.png"
 import iconmonay from "../img/icon-money.png"
 import iconsecurity from "../img/icon-security.png"
-import "../css/Home.css"
-import "../.././src/index.css"
 
 function Home() {
   return (

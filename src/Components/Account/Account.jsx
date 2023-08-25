@@ -1,6 +1,5 @@
 
 
-import "../../css/Account.css"
 
 function Account({ title, amount, description }) {
   return (

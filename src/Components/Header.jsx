@@ -1,10 +1,10 @@
-import "../css/Header.css"
+
 import logo from "../img/argentBankLogo.png"
 
 
 function Header ( ) {
     return (
-      <header>
+
         <nav className="main-nav">
           <a className="main-nav-logo" href="/">
             <img
@@ -21,7 +21,7 @@ function Header ( ) {
             </a>
           </div>
         </nav>
-      </header>
+
     )
 }
 

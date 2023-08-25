@@ -1,4 +1,3 @@
-import "../css/Form.css"
 
 function Form() {
   return (
