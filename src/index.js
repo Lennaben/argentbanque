@@ -8,18 +8,23 @@ import Signin from "./Views/Signin"
 import Erreur from "./Views/Erreur"
 import User from "./Views/User"
 import Header from "./Components/Header"
+import { Provider } from 'react-redux'; // Importez le Provider
+import store from './Redux/store'; // Importez le store que vous avez créé
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-  <BrowserRouter>
-    <Header />
+  <Provider store={store}>
     
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/sign-in" element={<Signin />} />
-      <Route path="*" element={<Erreur />} />
-      <Route path="/user" element={<User />} />
-    </Routes>
-    <Footer />
-  </BrowserRouter>
+    <BrowserRouter>
+      <Header />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/sign-in" element={<Signin />} />
+        <Route path="*" element={<Erreur />} />
+        <Route path="/user" element={<User />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  </Provider>
 )

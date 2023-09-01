@@ -1,5 +1,6 @@
 // store.js
 import { configureStore } from "@reduxjs/toolkit"
+import user from "./feactures/user"
 
 // Importez ici vos reducers
 // import monReducer from './monReducer';
@@ -7,7 +8,7 @@ import { configureStore } from "@reduxjs/toolkit"
 const store = configureStore({
   reducer: {
     // Ajoutez vos reducers ici
-    // monReducer,
+    user: user,
   },
 })
 
