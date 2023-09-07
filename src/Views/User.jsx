@@ -11,11 +11,12 @@ function User() {
   console.log(token)
 
   if (!token) {
-    //Test pour changer le token avec mon actionb
-    dispatch(userActions.setToken("NewToken"))
+    //Redirection ver login
   }
 
-  console.log(token)
+  //UseEffect pour aller chercher le nom et le premon
+
+  console.log(token)  
 
   return (
     <main className="main bg-dark">
