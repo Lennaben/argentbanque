@@ -1,22 +1,36 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Account from "../Components/Account/Account"
-
 import * as userActions from "../Redux/feactures/user"
-
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+export function getToken() {
+  const sessionToken = sessionStorage.getItem("token")
+  const localToken = localStorage.getItem("token")
+  if (sessionToken !== null) {
+    return sessionToken
+  }
+  return localToken
+}
 function User() {
   // Si je suis pas connectée, redirection login (Token)
   const dispatch = useDispatch()
-  const token = useSelector((state) => state.user.token)
+  const token = getToken()
   console.log(token)
 
-  if (!token) {
-    //Redirection ver login
-  }
+  const navigate = useNavigate()
+
+  // verification si le token est stocker dans le local ou le sessionStorage
+
+  useEffect(() => {
+    if (token === null || token === undefined) {
+      navigate("/sign-in")
+    }
+  })
 
   //UseEffect pour aller chercher le nom et le premon
 
-  console.log(token)  
+  console.log(token)
 
   return (
     <main className="main bg-dark">
