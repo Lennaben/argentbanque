@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from "react-redux"
 import * as userActions from "../Redux/feactures/user"
 import { useNavigate } from "react-router-dom"
 
-// afficher le user Name dans le header, afficher le firte name last name sur la page user, mettre en place le formulaire pour changer le user name, 
-// et cree me store pour stocker pour les infos 
-
-
+// afficher le user Name dans le header, afficher le firte name last name sur la page user, mettre en place le formulaire pour changer le user name,
+// et cree me store pour stocker pour les infos
 
 function Form() {
   const dispatch = useDispatch()
@@ -42,11 +40,11 @@ function Form() {
           setEmail("")
           setMessage("User created successfully")
           navigate("/user")
-          if (data.check === true) {
-            localStorage.setItem("token", res.body.token)
-          } else {
-            sessionStorage.setItem("token", res.body.token)
-          }
+          // if (data.check === true) {
+          //   localStorage.setItem("token", res.body.token)
+          // } else {
+          //   sessionStorage.setItem("token", res.body.token)
+          // }
           // la redirection a ete fait
         } else navigate("/sign-in")
         setMessage("Some error occurred")

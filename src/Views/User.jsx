@@ -4,18 +4,21 @@ import Account from "../Components/Account/Account"
 import * as userActions from "../Redux/feactures/user"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-export function getToken() {
-  const sessionToken = sessionStorage.getItem("token")
-  const localToken = localStorage.getItem("token")
-  if (sessionToken !== null) {
-    return sessionToken
-  }
-  return localToken
-}
+// function getToken() {
+//   const sessionToken = sessionStorage.getItem("token")
+//   const localToken = localStorage.getItem("token")
+//   if (sessionToken !== null) {
+//     return sessionToken
+//   }
+//   return localToken
+// }
 function User() {
   // Si je suis pas connectée, redirection login (Token)
   const dispatch = useDispatch()
-  const token = getToken()
+  const user = useSelector((state) => state.user)
+  const token = user.token
+  // const token = getToken()
+  // const token = null
   console.log(token)
 
   const navigate = useNavigate()
@@ -23,8 +26,10 @@ function User() {
   // verification si le token est stocker dans le local ou le sessionStorage
 
   useEffect(() => {
-    if (token === null || token === undefined) {
+    if (!token) {
       navigate("/sign-in")
+    } else {
+      //Récupere le nom et prenom + Ajouter au state redux
     }
   })
 
