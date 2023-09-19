@@ -40,11 +40,13 @@ function Form() {
           setEmail("")
           setMessage("User created successfully")
           navigate("/user")
-          // if (data.check === true) {
-          //   localStorage.setItem("token", res.body.token)
-          // } else {
-          //   sessionStorage.setItem("token", res.body.token)
-          // }
+          if (check) {
+            localStorage.setItem("token", res.body.token)
+            sessionStorage.clear('token')
+          } else {
+            sessionStorage.setItem("token", res.body.token)
+            localStorage.clear('token')
+          }
           // la redirection a ete fait
         } else navigate("/sign-in")
         setMessage("Some error occurred")

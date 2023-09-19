@@ -31,7 +31,7 @@ function User() {
     } else {
       //Récupere le nom et prenom + Ajouter au state redux
     }
-  })
+  },[])
 
   //UseEffect pour aller chercher le nom et le premon
 

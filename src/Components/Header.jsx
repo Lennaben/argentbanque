@@ -1,12 +1,14 @@
 import logo from "../img/argentBankLogo.png"
 import Signin from "../Views/Signin"
 // import { getToken } from "../Views/User"
-import { useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import * as userActions from "../Redux/feactures/user"
 
 function Header() {
   const token = useSelector((state) => state.user.token)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   return (
     <nav className="main-nav">
@@ -20,16 +22,18 @@ function Header() {
       </a>
       <div>
         {!token ? (
-          <a className="main-nav-item">
+          <Link className="main-nav-item" to='/sign-in'> 
             <i className="fa fa-user-circle"></i>
             Sign In
-          </a>
+          </Link>
         ) : (
           <a
             className="main-nav-item"
             onClick={(e) => {
               e.preventDefault()
-
+              dispatch(userActions.setLogout())
+              localStorage.clear("token") 
+              sessionStorage.clear("token") 
               navigate("/sign-in")
             }}
           >
