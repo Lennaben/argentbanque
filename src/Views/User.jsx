@@ -1,24 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import Account from "../Components/Account/Account"
 import * as userActions from "../Redux/feactures/user"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-// function getToken() {
-//   const sessionToken = sessionStorage.getItem("token")
-//   const localToken = localStorage.getItem("token")
-//   if (sessionToken !== null) {
-//     return sessionToken
-//   }
-//   return localToken
-// }
+
 function User() {
   // Si je suis pas connectée, redirection login (Token)
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
+
+
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
   const token = user.token
-  // const token = getToken()
-  // const token = null
+
   console.log(token)
 
   const navigate = useNavigate()
@@ -29,11 +25,29 @@ function User() {
     if (!token) {
       navigate("/sign-in")
     } else {
-      //Récupere le nom et prenom + Ajouter au state redux
+      fetch("http://localhost:3001/api/v1/user/profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // setFirstName(data.body.firstName)
+          // setLastName(data.body.lastName)
+          dispatch(
+            userActions.setUser({
+              prenom: data.body.firstName,
+              name: data.body.lastName,
+            })
+          )
+          console.log(data)
+        })
     }
-  },[])
+  }, [])
 
-  //UseEffect pour aller chercher le nom et le premon
+
 
   console.log(token)
 
@@ -43,8 +57,9 @@ function User() {
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {user.prenom} {user.name}!
         </h1>
+        {/* au clic sur le bouton edit , transformer le nom et prenom en input , afficher un bouton envoyer et annuler , puis gerer la logique PUT  request pour modifier le nom */}
         <button className="edit-button">Edit Name</button>
       </div>
       <h2 className="sr-only">Accounts</h2>
