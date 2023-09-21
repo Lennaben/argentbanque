@@ -10,7 +10,6 @@ function User() {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
 
-
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const token = user.token
@@ -47,8 +46,6 @@ function User() {
     }
   }, [])
 
-
-
   console.log(token)
 
   return (
@@ -57,10 +54,12 @@ function User() {
         <h1>
           Welcome back
           <br />
-          {user.prenom} {user.name}!
+          {user.prenom} {user.name}!{/* Mon formulaire */}
         </h1>
-        {/* au clic sur le bouton edit , transformer le nom et prenom en input , afficher un bouton envoyer et annuler , puis gerer la logique PUT  request pour modifier le nom */}
-        <button className="edit-button">Edit Name</button>
+        {/* au clic sur le bouton edit , transformer le nom et prenom en input , afficher un bouton envoyer et annuler , puis gerer la logique PUT  request pour modifier le nom et prenom fetch, modifier les Store REDUX */}
+        <button className="edit-button" onClick={(e) => console.log("ok")}>
+          Edit Name
+        </button>
       </div>
       <h2 className="sr-only">Accounts</h2>
       <Account

@@ -7,6 +7,8 @@ import * as userActions from "../Redux/feactures/user"
 
 function Header() {
   const token = useSelector((state) => state.user.token)
+  const user = useSelector((state) => state.user)
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -22,7 +24,7 @@ function Header() {
       </a>
       <div>
         {!token ? (
-          <Link className="main-nav-item" to='/sign-in'> 
+          <Link className="main-nav-item" to="/sign-in">
             <i className="fa fa-user-circle"></i>
             Sign In
           </Link>
@@ -32,12 +34,13 @@ function Header() {
             onClick={(e) => {
               e.preventDefault()
               dispatch(userActions.setLogout())
-              localStorage.clear("token") 
-              sessionStorage.clear("token") 
+              localStorage.clear("token")
+              sessionStorage.clear("token")
               navigate("/sign-in")
             }}
           >
             <i className="fa fa-user-circle"></i>
+            {user.prenom}
             Sign out
           </a>
         )}
