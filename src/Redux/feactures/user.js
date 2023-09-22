@@ -1,9 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = { 
-  token: localStorage.getItem('token') ? localStorage.getItem('token') : sessionStorage.getItem('token') ?  sessionStorage.getItem('token') : null ,
-   name: null, 
-   prenom: null }
+const initialState = {
+  token: localStorage.getItem("token")
+    ? localStorage.getItem("token")
+    : sessionStorage.getItem("token")
+    ? sessionStorage.getItem("token")
+    : null,
+  name: null,
+  prenom: null,
+  userName: null,
+}
 
 console.log(initialState.name)
 
@@ -26,7 +32,10 @@ const userSlice = createSlice({
     },
     setLogout: (state) => {
       state.token = null
-    }
+    },
+    setUserName: (state, action) => {
+      state.userName = action.payload
+    },
     // decrement: (state) => {
     //   state.value -= 1
     // },

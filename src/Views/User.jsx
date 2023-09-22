@@ -4,6 +4,7 @@ import Account from "../Components/Account/Account"
 import * as userActions from "../Redux/feactures/user"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import FormEdit from "../Components/FormEdit"
 
 function User() {
   // Si je suis pas connectée, redirection login (Token)
@@ -13,6 +14,9 @@ function User() {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const token = user.token
+  const[edit, setEdit] = useState(false)
+
+
 
   console.log(token)
 
@@ -39,6 +43,7 @@ function User() {
             userActions.setUser({
               prenom: data.body.firstName,
               name: data.body.lastName,
+              userName: data.body.userName,
             })
           )
           console.log(data)
@@ -48,19 +53,34 @@ function User() {
 
   console.log(token)
 
+  function handleSubmit(){
+    setEdit(!edit)
+  }
+
   return (
     <main className="main bg-dark">
-      <div className="header">
-        <h1>
-          Welcome back
-          <br />
-          {user.prenom} {user.name}!{/* Mon formulaire */}
-        </h1>
-        {/* au clic sur le bouton edit , transformer le nom et prenom en input , afficher un bouton envoyer et annuler , puis gerer la logique PUT  request pour modifier le nom et prenom fetch, modifier les Store REDUX */}
-        <button className="edit-button" onClick={(e) => console.log("ok")}>
-          Edit Name
-        </button>
-      </div>
+      {!edit ? (
+        <div className="header">
+          <h1>
+            Welcome back
+            <br />
+            {user.prenom} {user.name} !
+          </h1>
+          {/* au clic sur le bouton edit , transformer le nom et prenom en input , afficher un bouton envoyer et annuler , puis gerer la logique PUT  request pour modifier le nom et prenom fetch, modifier les Store REDUX */}
+          {/* cree le fetsh pour enoyer le new userName  */}
+          <button className="edit-button" onClick={handleSubmit}>
+            Edit Name
+          </button>
+        </div>
+      ) : (
+        <FormEdit
+          firstName={user.prenom}
+          lasttName={user.name}
+          defaultUserName={user.userName}
+          submit={handleSubmit}
+        />
+      )}
+
       <h2 className="sr-only">Accounts</h2>
       <Account
         title="Argent Bank Checking (x8349)"
