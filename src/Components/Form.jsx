@@ -18,7 +18,7 @@ function Form() {
   let handleSubmit = (e) => {
     e.preventDefault()
     console.log(email, password)
-    const data = {
+    const data = {  
       email: email,
       password: password,
       check: check,

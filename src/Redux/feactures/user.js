@@ -30,11 +30,11 @@ const userSlice = createSlice({
     setPrenom: (state, action) => {
       state.prenom = action.payload
     },
-    setLogout: (state) => {
-      state.token = null
-    },
     setUserName: (state, action) => {
       state.userName = action.payload
+    },
+    setLogout: (state) => {
+      state.token = null
     },
     // decrement: (state) => {
     //   state.value -= 1

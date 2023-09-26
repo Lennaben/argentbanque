@@ -6,6 +6,8 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import FormEdit from "../Components/FormEdit"
 
+
+
 function User() {
   // Si je suis pas connectée, redirection login (Token)
   const dispatch = useDispatch()
@@ -14,9 +16,7 @@ function User() {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const token = user.token
-  const[edit, setEdit] = useState(false)
-
-
+  const [edit, setEdit] = useState(false)
 
   console.log(token)
 
@@ -53,7 +53,7 @@ function User() {
 
   console.log(token)
 
-  function handleSubmit(){
+  function handleSubmit() {
     setEdit(!edit)
   }
 
@@ -67,7 +67,7 @@ function User() {
             {user.prenom} {user.name} !
           </h1>
           {/* au clic sur le bouton edit , transformer le nom et prenom en input , afficher un bouton envoyer et annuler , puis gerer la logique PUT  request pour modifier le nom et prenom fetch, modifier les Store REDUX */}
-          {/* cree le fetsh pour enoyer le new userName  */}
+
           <button className="edit-button" onClick={handleSubmit}>
             Edit Name
           </button>

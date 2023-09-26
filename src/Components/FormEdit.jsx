@@ -1,23 +1,43 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import * as userActions from "../Redux/feactures/user"
 
 function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
   const [userName, setUserName] = useState(defaultUserName)
   const dispatch = useDispatch()
+  const token = recupToken()
 
-  function changeUserName(e) {   
-    dispatch(changeUserName(userName))
-    submit();
+  function recupToken() {
+    if (
+      sessionStorage.getItem("token") !== null ||
+      sessionStorage.getItem("token") !== undefined
+    ) {
+      return sessionStorage.getItem("token")
+    }
+    return localStorage.getItem("token")
+  }
+
+  async function changeUserName(userName) {
+    const modifUserName = {
+      userName: userName,
+    }
+    const identifyUserName = JSON.stringify(modifUserName)
+    const request = await fetch("http://localhost:3001/api/v1/user/profile", {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: identifyUserName,
+    }).then((data) => {
+      dispatch(userActions.setUserName(data.userName))
+    })
   }
 
   return (
     <div className="formEditWrapper">
-      <form
-        className="EditForm"
-        onSubmit={(e) => {
-          changeUserName(e)
-        }}
-      >
+      <form className="EditForm">
         <h1 className="EditFormTitle">Edit User Infos</h1>
         <div className=".input-wrapper">
           <label htmlFor="UserName">User name </label>
