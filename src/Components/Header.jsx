@@ -1,6 +1,5 @@
 import logo from "../img/argentBankLogo.png"
 import Signin from "../Views/Signin"
-// import { getToken } from "../Views/User"
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import * as userActions from "../Redux/feactures/user"
@@ -42,7 +41,8 @@ function Header() {
                 navigate("/sign-in")
               }}
             >
-              <i className="fa-sign-out"></i>
+              <i className="fa-solid fa-arrow-up-right-from-square"></i>
+
               <span>Sign out</span>
             </a>
           </div>

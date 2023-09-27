@@ -30,14 +30,28 @@ main {
 
 .footer {
   margin-top: auto;
-  
 }
 
-.linkflex{
+.linkflex {
   display: flex;
   column-gap: 10px;
 }
 
+.EditFormTitle {
+}
+
+.EditForm {
+}
+
+.errorMotdepasse {
+  color: red;
+}
+
+.boxId {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+}
 
 .bg-dark {
   background-color: #12002b;
@@ -203,28 +217,25 @@ main {
   font-size: 5rem;
 }
 
-.input-remember {
+.EditButtonWrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-remember {
 }
 
 .input-remember label {
-  margin-left: 0.25rem;
 }
 
 .input-wrapper {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin-bottom: 1rem;
 }
 
 .input-wrapper label {
-  font-weight: bold;
 }
 
-.input-wrapper input {
-  padding: 5px;
-  font-size: 1.2rem;
+.input-wrapper {
 }
 
 .footer {

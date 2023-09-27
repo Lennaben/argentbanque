@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import Account from "../Components/Account/Account"
+import Account from "../Components/Account"
 import * as userActions from "../Redux/feactures/user"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"

@@ -81,7 +81,8 @@ function Form() {
           onChange={() => setCheck(!check)}
         />
         <label htmlFor="remember-me">Remember me</label>
-        {error ? <p>ID</p> : ""}
+        <div className="boxId"> {error ? <p className="errorMotdepasse">ERROR MOT DE PASSE OR IDENTIFIANT</p> : ""}</div>
+       
         {/* message error OK  */}
       </div>
       {/* <!-- PLACEHOLDER DUE TO STATIC SITE --> */}
