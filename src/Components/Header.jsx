@@ -29,20 +29,23 @@ function Header() {
             Sign In
           </Link>
         ) : (
-          <a
-            className="main-nav-item"
-            onClick={(e) => {
-              e.preventDefault()
-              dispatch(userActions.setLogout())
-              localStorage.clear("token")
-              sessionStorage.clear("token")
-              navigate("/sign-in")
-            }}
-          >
+          <div className="linkflex">
             <i className="fa fa-user-circle"></i>
-            {user.prenom}
-            Sign out
-          </a>
+            <span>{user.userName}</span>
+            <a
+              className="main-nav-item"
+              onClick={(e) => {
+                e.preventDefault()
+                dispatch(userActions.setLogout())
+                localStorage.clear("token")
+                sessionStorage.clear("token")
+                navigate("/sign-in")
+              }}
+            >
+              <i className="fa-sign-out"></i>
+              <span>Sign out</span>
+            </a>
+          </div>
         )}
       </div>
     </nav>

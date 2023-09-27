@@ -23,6 +23,7 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.name = action.payload.name
       state.prenom = action.payload.prenom
+      state.userName = action.payload.userName
     },
     setName: (state, action) => {
       state.name = action.payload
@@ -45,6 +46,6 @@ const userSlice = createSlice({
 // on extrait les actions et le reducer
 const { actions, reducer } = userSlice
 // on export chaque action individuellement
-export const { setToken, setName, setPrenom, setUser, setLogout } = actions
+export const { setToken, setName, setPrenom, setUser, setLogout, setUserName } = actions
 // on export le reducer comme default export
 export default reducer

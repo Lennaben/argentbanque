@@ -17,12 +17,16 @@ function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
     return localStorage.getItem("token")
   }
 
-  async function changeUserName(userName) {
-    const modifUserName = {
+  async function changeUserName(e, userName) {
+    e.preventDefault()
+    // on assigne une variable avec notre username à envoyer
+    const userToSend = {
       userName: userName,
     }
-    const identifyUserName = JSON.stringify(modifUserName)
-    const request = await fetch("http://localhost:3001/api/v1/user/profile", {
+    // on transforme cet objet en json
+    const identifyUserName = JSON.stringify(userToSend)
+    // on envoi les datas a la bdd afin de modifier l'uername
+    const response = await fetch("http://localhost:3001/api/v1/user/profile", {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -30,9 +34,16 @@ function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
         Authorization: `Bearer ${token}`,
       },
       body: identifyUserName,
-    }).then((data) => {
-      dispatch(userActions.setUserName(data.userName))
     })
+    //  si ça se passe bien , on actualiser le username dans redux avec setUsername
+    if (response.status === 200) {
+      const responseData = await response.json() // Parse the JSON response
+      const userNameFromResponse = responseData.body.userName
+      console.log("userName from response:", userNameFromResponse)
+      dispatch(userActions.setUserName(userNameFromResponse))
+    } else {
+      console.log("something went wrong")
+    }
   }
 
   return (
@@ -58,7 +69,13 @@ function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
           <input type="text" id="LastName" placeholder={lasttName} disabled />
         </div>
         <div className="EditButtonWrapper">
-          <button className="edit-button " type="submit">
+          <button
+            className="edit-button "
+            type="submit"
+            onClick={(e) => {
+              changeUserName(e, userName)
+            }}
+          >
             save
           </button>
           <button

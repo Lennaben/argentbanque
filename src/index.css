@@ -33,6 +33,12 @@ main {
   
 }
 
+.linkflex{
+  display: flex;
+  column-gap: 10px;
+}
+
+
 .bg-dark {
   background-color: #12002b;
   height: 100%;

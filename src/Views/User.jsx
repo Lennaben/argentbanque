@@ -6,8 +6,6 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import FormEdit from "../Components/FormEdit"
 
-
-
 function User() {
   // Si je suis pas connectée, redirection login (Token)
   const dispatch = useDispatch()
