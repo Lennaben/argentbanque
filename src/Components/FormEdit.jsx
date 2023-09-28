@@ -2,8 +2,6 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import * as userActions from "../Redux/feactures/user"
 
-
-
 function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
   const [userName, setUserName] = useState(defaultUserName)
   const dispatch = useDispatch()
@@ -52,7 +50,7 @@ function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
     <div className="formEditWrapper">
       <form className="EditForm">
         <h1 className="EditFormTitle">Edit User Infos</h1>
-        <div className=".input-wrapper">
+        <div className="input-wrapper">
           <label htmlFor="UserName">User name </label>
           <input
             type="text"
@@ -62,11 +60,11 @@ function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
             required
           />
         </div>
-        <div className=".input-wrapper">
+        <div className="input-wrapper">
           <label htmlFor="FirstName">First name</label>
           <input type="text" id="FirstName" placeholder={firstName} disabled />
         </div>
-        <div className=".input-wrapper">
+        <div className="input-wrapper">
           <label htmlFor="LastName">Last name</label>
           <input type="text" id="LastName" placeholder={lasttName} disabled />
         </div>

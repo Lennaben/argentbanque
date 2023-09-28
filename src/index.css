@@ -20,6 +20,10 @@ body {
   flex-direction: column;
 }
 
+.bcgPage {
+  background-color: red;
+}
+
 main {
   flex: 1;
 }
@@ -226,16 +230,30 @@ main {
 .input-remember {
 }
 
-.input-remember label {
+.input-wrapper {
 }
 
-.input-wrapper {
+.EditForm label {
+  color: white;
+}
+
+#UserName {
+  border-radius: 10px;
+  height: 30px;
+}
+
+#FirstName{
+    height: 30px;
+
 }
 
 .input-wrapper label {
+  padding-right: 20px;
 }
 
 .input-wrapper {
+  border-radius: 20px;
+  margin-bottom: 15px;
 }
 
 .footer {
