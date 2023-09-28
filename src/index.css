@@ -242,9 +242,14 @@ main {
   height: 30px;
 }
 
-#FirstName{
-    height: 30px;
+#FirstName {
+  height: 30px;
+  border-radius: 5px;
+}
 
+#LastName {
+  height: 30px;
+  border-radius: 5px;
 }
 
 .input-wrapper label {
