@@ -7,7 +7,6 @@ import user from "./feactures/user"
 
 const store = configureStore({
   reducer: {
-    // Ajoutez vos reducers ici
     user: user,
   },
 })

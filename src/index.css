@@ -21,7 +21,13 @@ body {
 }
 
 .bcgPage {
-  background-color: red;
+  background-color: rgb(255, 255, 255);
+}
+
+.txt-container{  
+  height: 50px;
+  font-size: 50px;
+  color: red;
 }
 
 main {
@@ -42,6 +48,7 @@ main {
 }
 
 .EditFormTitle {
+  color: white;
 }
 
 .EditForm {
@@ -225,6 +232,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 10px;
 }
 
 .input-remember {
@@ -239,7 +247,7 @@ main {
 
 #UserName {
   border-radius: 10px;
-  height: 30px;
+  height: 30px
 }
 
 #FirstName {
@@ -312,11 +320,14 @@ main {
 }
 
 .edit-button {
-  border-color: #00bc77;
-  background-color: #00bc77;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px;
+     border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    height: 60px;
+    border-radius: 5%;
+    width: 100px;
 }
 
 .header {

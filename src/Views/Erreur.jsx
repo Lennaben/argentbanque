@@ -7,7 +7,7 @@ import * as userActions from "../Redux/feactures/user"
 const Erreur = () => {
   return (
     <main className="bcgPage">
-      <div txt-container>
+      <div className=" txt-container">
         <h2 className="txt404">404</h2>
         <div className="text">
           {" "}
