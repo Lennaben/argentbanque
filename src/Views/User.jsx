@@ -20,7 +20,7 @@ function User() {
 
   const navigate = useNavigate()
 
-  // verification si le token est stocker dans le local ou le sessionStorage
+  // verification si le token est stocker dans le local ou le sessionStorage grace a la methode fetch 
 
   useEffect(() => {
     if (!token) {
@@ -64,7 +64,9 @@ function User() {
             <br />
             {user.prenom} {user.name} !
           </h1>
-          {/* au clic sur le bouton edit , transformer le nom et prenom en input , afficher un bouton envoyer et annuler , puis gerer la logique PUT  request pour modifier le nom et prenom fetch, modifier les Store REDUX */}
+          {/* au clic sur le bouton edit , transformer le nom et prenom en input ,
+           afficher un bouton envoyer et annuler , 
+           puis gerer la logique PUT  request pour modifier le nom et prenom fetch, modifier les Store REDUX */}
 
           <button className="edit-button" onClick={handleSubmit}>
             Edit Name
