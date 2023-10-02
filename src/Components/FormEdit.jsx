@@ -1,49 +1,23 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import * as userActions from "../Redux/feactures/user"
+import { callAPIUserProfilUpdate } from "../callAPI/callAPI"
 
 function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
   const [userName, setUserName] = useState(defaultUserName)
   const dispatch = useDispatch()
-  const token = recupToken()
-
-  function recupToken() {
-    if (
-      sessionStorage.getItem("token") !== null ||
-      sessionStorage.getItem("token") !== undefined
-    ) {
-      return sessionStorage.getItem("token")
-    }
-    return localStorage.getItem("token")
-  }
+  const token = useSelector((state) => state.user.token)
 
   async function changeUserName(e, userName) {
     e.preventDefault()
     // on assigne une variable avec notre username à envoyer
-    const userToSend = {
+    const data = {
       userName: userName,
     }
     // on transforme cet objet en json
-    const identifyUserName = JSON.stringify(userToSend)
+    // const identifyUserName = JSON.stringify(userToSend)
     // on envoi les datas a la bdd afin de modifier l'uername
-    const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: identifyUserName,
-    })
-    //  si ça se passe bien , on actualiser le username dans redux avec setUsername
-    if (response.status === 200) {
-      const responseData = await response.json() // Parse the JSON response
-      const userNameFromResponse = responseData.body.userName
-      console.log("userName from response:", userNameFromResponse)
-      dispatch(userActions.setUserName(userNameFromResponse))
-    } else {
-      console.log("something went wrong")
-    }
+    callAPIUserProfilUpdate(data, token, userActions, dispatch)
   }
 
   return (

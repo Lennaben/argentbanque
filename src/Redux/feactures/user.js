@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  token: localStorage.getItem("token")
-    ? localStorage.getItem("token")
-    : sessionStorage.getItem("token")
-    ? sessionStorage.getItem("token")
-    : null,
+  token: null,
   name: null,
   prenom: null,
   userName: null,
@@ -34,8 +30,11 @@ const userSlice = createSlice({
     setUserName: (state, action) => {
       state.userName = action.payload
     },
-    setLogout: (state) => {
+    setLogout: (state, action) => {
       state.token = null
+      state.name = null
+      state.prenom = null
+      state.userName = null
     },
     // decrement: (state) => {
     //   state.value -= 1
@@ -46,6 +45,7 @@ const userSlice = createSlice({
 // on extrait les actions et le reducer
 const { actions, reducer } = userSlice
 // on export chaque action individuellement
-export const { setToken, setName, setPrenom, setUser, setLogout, setUserName } = actions
+export const { setToken, setName, setPrenom, setUser, setLogout, setUserName } =
+  actions
 // on export le reducer comme default export
 export default reducer

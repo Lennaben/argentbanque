@@ -6,6 +6,8 @@ import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import FormEdit from "../Components/FormEdit"
 
+import { callAPIUserProfilGet } from "../callAPI/callAPI"
+
 function User() {
   // Si je suis pas connectée, redirection login (Token)
   const dispatch = useDispatch()
@@ -20,32 +22,14 @@ function User() {
 
   const navigate = useNavigate()
 
-  // verification si le token est stocker dans le local ou le sessionStorage grace a la methode fetch 
+  // verification si le token est stocker dans le local ou le sessionStorage grace a la methode fetch
 
   useEffect(() => {
     if (!token) {
       navigate("/sign-in")
     } else {
-      fetch("http://localhost:3001/api/v1/user/profile", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // setFirstName(data.body.firstName)
-          // setLastName(data.body.lastName)
-          dispatch(
-            userActions.setUser({
-              prenom: data.body.firstName,
-              name: data.body.lastName,
-              userName: data.body.userName,
-            })
-          )
-          console.log(data)
-        })
+      // Appel API
+      callAPIUserProfilGet(token, userActions, dispatch)
     }
   }, [])
 
