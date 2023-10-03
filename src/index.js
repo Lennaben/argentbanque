@@ -13,11 +13,10 @@ import store from './Redux/store'; // Importez le store que vous avez créé
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
+  // Le provider permet de rendre les methodes et datas du store disponibles à notre application
   <Provider store={store}>
-    
     <BrowserRouter>
       <Header />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<Signin />} />

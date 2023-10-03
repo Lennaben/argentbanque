@@ -4,19 +4,21 @@ import * as userActions from "../Redux/feactures/user"
 import { callAPIUserProfilUpdate } from "../callAPI/callAPI"
 
 function FormEdit({ firstName, lasttName, submit, defaultUserName }) {
+  // initialisation du state username
   const [userName, setUserName] = useState(defaultUserName)
-  const dispatch = useDispatch()
+  // on récupère le token du store redux
   const token = useSelector((state) => state.user.token)
+  // fonction qui permet de mettre a jour le store redux
+  const dispatch = useDispatch()
 
+  // Fonction permettant de mettre à jour l'userName
   async function changeUserName(e, userName) {
     e.preventDefault()
-    // on assigne une variable avec notre username à envoyer
+    // on assigne le state username
     const data = {
       userName: userName,
     }
-    // on transforme cet objet en json
-    // const identifyUserName = JSON.stringify(userToSend)
-    // on envoi les datas a la bdd afin de modifier l'uername
+    // On fetch avec la methode put l'username afin de mettre celui çi a jour dans la bdd 
     callAPIUserProfilUpdate(data, token, userActions, dispatch)
   }
 

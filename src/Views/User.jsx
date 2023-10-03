@@ -9,12 +9,8 @@ import FormEdit from "../Components/FormEdit"
 import { callAPIUserProfilGet } from "../callAPI/callAPI"
 
 function User() {
-  // Si je suis pas connectée, redirection login (Token)
   const dispatch = useDispatch()
   const user = useSelector((state) => state.user)
-
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
   const token = user.token
   const [edit, setEdit] = useState(false)
 
@@ -22,8 +18,9 @@ function User() {
 
   const navigate = useNavigate()
 
-  // verification si le token est stocker dans le local ou le sessionStorage grace a la methode fetch
+  
 
+  // Si il n 'y a pas de token on redirige vers la page sign in sinon on récupère les user datas 
   useEffect(() => {
     if (!token) {
       navigate("/sign-in")

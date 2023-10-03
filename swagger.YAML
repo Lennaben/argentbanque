@@ -101,23 +101,23 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /compte/{compteId}/opération:
-    get:
+  /transactions/{compteId}:
+    get: 
       security:
         - Bearer: []
       tags:
-        - opération Module
-      summary: opération API
-      description: API for fetching transactions
+        - transaction Module
+      summary: Get all transactions
+      description: API for fetching transactions of specific account
       parameters:
         - in: path
           name: compteId
-          description: unique ID of compte
+          description: unique ID of specific account
           required: true
           type: string
       responses:
         "200":
-          description: operation recuperer avec succés
+          description: transaction recuperer avec succés
           schema:
             $ref: "#/definitions/accountApiResponse"
         "400":
@@ -130,22 +130,17 @@ paths:
           description: compte not found
         "500":
           description: Internal Server Error
-  /opération/{compteId}/{opérationId}:
+  /transaction/{transactionId}:
     get:
       security:
         - Bearer: []
       tags:
-        - opération Module
-      summary: opération API
-      description: une API pour mettre a jour les categories dans transaction
+        - transaction Module
+      summary: Get a single transaction
+      description: API for fetching a specific transaction
       parameters:
         - in: path
-          name: compteId
-          description: unique ID of account
-          required: true
-          type: string
-        - in: path
-          name: opérationId
+          name: transactionId
           description: unique ID of opération
           required: true
           type: string
@@ -164,28 +159,17 @@ paths:
           description: compte not found
         "500":
           description: Internal Server Error
-  /opération/{compteId}/{opérationId}/{element}:
     put:
       security:
         - Bearer: []
       tags:
-        - opération Module
-      summary: opération API
+        - transaction Module
+      summary: Update Category or add note  
       description: API for update category in opération
       parameters:
         - in: path
-          name: compteId
-          description: unique ID of account
-          required: true
-          type: string
-        - in: path
-          name: opérationId
+          name: transactionId
           description: unique ID of opération
-          required: true
-          type: string
-        - in: path
-          name: element
-          description: category or note
           required: true
           type: string
         - in: body
@@ -217,23 +201,13 @@ paths:
       security:
         - Bearer: []
       tags:
-        - opération Module
-      summary: opération API
-      description: API for update category in opération
+        - transaction Module
+      summary: Delete note
+      description: Delete note in transaction
       parameters:
         - in: path
-          name: compteId
-          description: unique ID of account
-          required: true
-          type: string
-        - in: path
-          name: opérationId
+          name: transactionId
           description: unique ID of opération
-          required: true
-          type: string
-        - in: path
-          name: element
-          description: category or note
           required: true
           type: string
       responses:
@@ -249,7 +223,6 @@ paths:
           description: Account not found
         "500":
           description: Internal Server Error
-
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -310,22 +283,21 @@ definitions:
       userName:
         type: string
   accountApiResponse:
-    type: object
-    properties:
-      opérations:
+    type: array
+    description: array of transactions
+    items:
         type: object
         properties:
-          opération:
-            type: object
-            properties:
-              date:
-                type: string
-              description:
-                type: string
-              amount:
-                type: string
-              balance:
-                type: number
+          id:
+            type: integer
+          date:
+            type: string
+          description:
+            type: string
+          amount:
+            type: string
+          balance:
+            type: number
   CategoryApiResponse:
     type: object
     properties:

@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import * as userActions from "../Redux/feactures/user"
 import { useNavigate } from "react-router-dom"
 import { callAPILogin } from "../callAPI/callAPI"
 
-// afficher le user Name dans le header, afficher le firte name last name sur la page user, mettre en place le formulaire pour changer le user name,
-// et cree me store pour stocker pour les infos
+// Le formulaire permet à l'utilisateur de se connecter
+// Une fois connecté les datas de l'utilisateur ainsi que le token seront disponible dans le store redux  
 
 function Form() {
+  // fonction de Navigation
+  const navigate = useNavigate()
+  // fonction pour mettre a jour le store redux
   const dispatch = useDispatch()
+
+  // gestion des states
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [check, setCheck] = useState(false)
   const [message, setMessage] = useState("")
-  const navigate = useNavigate()
   const [error, setError] = useState(false)
 
+  // Au chargement de la page on vérifi si un token est déjà disponible 
+  // si c'est le cas , on sauvegarde le token dans le store 
+  // puis on redirige l'utilisateur vers la page /user
   useEffect(() => {
     const localToken = localStorage.getItem("token")
     if (localToken) {
@@ -25,17 +32,19 @@ function Form() {
     }
   }, [])
 
+  // Gestio de l'envoi du formulaire
   let handleSubmit = (e) => {
     e.preventDefault()
     console.log(email, password)
 
+    // on récupère les datas provenants des champs du formulaire ( via useState )
     const data = {
       email: email,
       password: password,
       check: check,
     }
 
-    // Fetch
+    // On fetch les datas via notre fonction callApiPlugin 
     callAPILogin(
       data,
       setEmail,
@@ -48,6 +57,7 @@ function Form() {
       check
     )
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="input-wrapper">
