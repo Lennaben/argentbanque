@@ -18,9 +18,7 @@ function User() {
 
   const navigate = useNavigate()
 
-  
-
-  // Si il n 'y a pas de token on redirige vers la page sign in sinon on récupère les user datas 
+  // Si il n 'y a pas de token on redirige vers la page sign in sinon on récupère les user datas
   useEffect(() => {
     if (!token) {
       navigate("/sign-in")
